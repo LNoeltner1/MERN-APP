@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -6,6 +6,8 @@ import Portfolio from "./components/Portfolio";
 import Footer from "./components/Footer";
 import "./App.css";
 import axios from "axios";
+import Router from "express";
+import View from "react-dom";
 
 function App() {
   useEffect(() => {
@@ -21,7 +23,11 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>Hello world!</h1>
+      <Router>
+        <Navbar />
+        <h1>Hello world!</h1>
+        <Footer />
+      </Router>
     </div>
   );
 }
