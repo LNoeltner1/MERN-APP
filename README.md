@@ -1,95 +1,99 @@
-# my-mern-app
+# Unit 20 React Homework: React Portfolio
 
-## GOAL: Build a fullstack MERN App
+Now that you've worked with React and have multiple projects to share, you'll be updating your portfolio and other materials to build toward being employer competitive. Creating a portfolio using React will help set you apart from other developers whose portfolios do not use some of the latest technologies.
 
-## Steps
+If you are opting out of career services, this is *still a required assignment*. Part of being a web developer means being a part of a community. Having a place to share your projects is *necessary* if you're applying for jobs, but is still *critical* on your journey as a developer.
 
-### 1. Setup the server.js
+## Requirements
 
-- Create your `server.js` file.
-- Run `npm init -y`
-- Run `npm install express mongoose dotenv if-env path`
-- Build out the basic server
+* Updated portfolio featuring 6 total projects
 
-```javascript
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const path = require("path");
+* Use React
 
-const PORT = process.env.PORT || 3001;
+* A `Header` component that appears on multiple pages
 
-const app = express();
+* A single `Project` component that will be used multiple times on a single page 
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+* Navigation with React Router, dynamic rendering, or another third part router
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-mern", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-});
+* A `Footer` component that appears on multiple pages
 
-const connection = mongoose.connection;
+* Update GitHub profile with pinned repositories featuring those same projects
 
-connection.on("connected", () => {
-  console.log("Mongoose successfully connected.");
-});
+* Deploy this site to GitHub Pages using the [Create React App docs for deployment.](https://create-react-app.dev/docs/deployment/#github-pages)
 
-connection.on("error", (err) => {
-  console.log("Mongoose connection error: ", err);
-});
+## Grading
 
-app.get("/api/config", (req, res) => {
-  res.json({
-    success: true,
-  });
-});
+| Requirement    | Weight |
+| -------------- | ------ |
+| Portfolio      | 90%    |
+| GitHub Profile | 10%    |
 
-app.listen(PORT, () => {
-  console.log(`App is running on http://localhost:${PORT}`);
-});
-```
 
-### 2. Add create-react-app client on top.
+## Instructions
 
-- In the root, run `npx create-react-app client --use-npm`
-- Run `npm install concurrently -D`
-- Add script: `"client": "cd client && npm run start",` to server package.json
-- Add script `"start-dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",` to server package.json
-- Add `"proxy": "http://localhost:3001",` to the client package.json
+* [Updated Portfolio](#updated-portfolio)
 
-#### Testing and Validation
+* [Design](#design)
 
-- Install axios in the client directory
-- Make an API call to the `/api/config` route and log it to the console.
+* [React](#react)
 
-### 3. Set the app up for Production
+* [Updated LinkedIn Profile](#updated-linkedin-profile)
 
-- Update the scripts object in the server package.json:
+### Updated Portfolio
 
-```javascript
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
-    "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
-    "client": "cd client && npm run start",
-    "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
-  },
-```
+Your updated site should still have all of the content it previously had:
 
-- Add build folder static and route to server.js
+* Your name
 
-```javascript
-app.use(express.static("client/build"));
-```
+* Links to your GitHub profile & LinkedIn page as well as your email address and phone number
 
-```javascript
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
-```
+* A link to a PDF of your resume with updated projects
+
+* A list of projects. For each project, make sure you have the following:
+
+  * Project title
+
+  * Link to the deployed version
+
+  * Link to the GitHub repository
+
+  * GIF or screenshot of the deployed application
+
+
+#### Design
+
+As with the previous portfolio homework, "good" design is subjective. Your site should look
+"polished." Here are a few guidelines on what that means:
+
+* Mobile-first design
+
+* Choose a color palette for your site so it doesn't just look like
+the default bootstrap theme or an unstyled HTML site. You may we
+
+* Make sure the font size is large enough to read, and that the colors don't cause eye strain.
+
+* If you want to go above and beyond, try using animations and react component libraries. Note 
+that this will _not_ affect your grade, but it may impact how potentials employers gauge your knowledge.
+
+### React
+
+Additionally, this new portfolio should be created using React.
+
+At a minimum, your portfolio should include the following:
+
+* A `Header` component that appears on multiple pages
+
+* A single `Project` component that will be used multiple times on a single page 
+
+* Navigation with React Router, dynamic rendering, or another third part router
+
+* A `Footer` component that appears on multiple pages
+
+
+### Updated LinkedIn Profile 
+
+Make sure to update your LinkedIn Profile with the new skills you've acquired since the last time it was updated.
+
+- - -
+© 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.

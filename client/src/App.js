@@ -1,5 +1,9 @@
 import { useEffect } from "react";
-import logo from "./logo.svg";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Contact from "./components/Contact";
+import Portfolio from "./components/Portfolio";
+import Footer from "./components/Footer";
 import "./App.css";
 import axios from "axios";
 
@@ -17,7 +21,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-        <h1>Hello world!</h1>
+      <h1>Hello world!</h1>
     </div>
   );
 }
